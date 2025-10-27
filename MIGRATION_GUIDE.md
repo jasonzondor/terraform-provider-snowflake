@@ -98,6 +98,19 @@ SQL compilation error:
 
 Until the behavior is unchanged on Snowflake, we will set this value to `YES` on destruction.
 
+### *(new feature)* Added serverless task parameters
+
+Added support for three new serverless task parameters in the `snowflake_task` resource:
+- `target_completion_interval` - Specifies the target completion interval for serverless tasks
+- `serverless_task_min_statement_size` - Specifies the minimum warehouse size for serverless tasks
+- `serverless_task_max_statement_size` - Specifies the maximum warehouse size for serverless tasks
+
+These parameters are only applicable to serverless tasks (tasks using `user_task_managed_initial_warehouse_size` instead of a dedicated warehouse).
+
+No changes in configuration and state are required. You can optionally update your configurations by explicitly setting these new fields for serverless tasks.
+
+References: [#3473](https://github.com/snowflakedb/terraform-provider-snowflake/issues/3473)
+
 No action is needed.
 
 ## v2.6.x ➞ v2.7.0
